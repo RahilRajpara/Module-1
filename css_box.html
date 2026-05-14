@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Speaking Course Poster</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #0e2141;
+            --panel: #f8f4ea;
+            --accent: #ffc75f;
+            --accent-2: #ff7c7c;
+            --text: #1f1f2e;
+            --muted: #4d5b7c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at top left, rgba(255,199,95,0.2), transparent 30%),
+                        radial-gradient(circle at bottom right, rgba(255,124,124,0.18), transparent 28%),
+                        linear-gradient(135deg, #152847 0%, #0d172f 100%);
+            font-family: 'Inter', Arial, sans-serif;
+            color: var(--text);
+            padding: 16px;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 18%),
+                              radial-gradient(circle at 75% 15%, rgba(255,199,95,0.12), transparent 16%),
+                              radial-gradient(circle at 80% 80%, rgba(255,124,124,0.12), transparent 20%);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .poster {
+            position: relative;
+            width: min(100%, 96vw);
+            max-width: 1180px;
+            min-height: 72vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: rgba(248, 244, 234, 0.98);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.18);
+            box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.2s ease both;
+        }
+
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at center, rgba(255,199,95,0.35), transparent 58%);
+            filter: blur(12px);
+        }
+
+        .poster::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at center, rgba(255,124,124,0.25), transparent 55%);
+            filter: blur(14px);
+        }
+
+        .hero-panel {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f4ea 100%);
+            padding: 40px 40px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+            overflow: hidden;
+        }
+
+        .hero-panel h1 {
+            margin: 0;
+            font-size: clamp(3rem, 4vw, 4.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: #1b1b32;
+            animation: slideIn 1s ease both;
+        }
+
+        .hero-panel p {
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 620px;
+            animation: fadeIn 1.1s ease both;
+            animation-delay: 0.2s;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            padding: 16px 24px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(255,199,95,0.18), rgba(255,124,124,0.18));
+            border: 1px solid rgba(255,199,95,0.28);
+            width: fit-content;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-badge span {
+            font-weight: 700;
+            color: #2f2f45;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 10px;
+            animation: fadeIn 1.15s ease both;
+            animation-delay: 0.3s;
+        }
+
+        .course-card {
+            position: relative;
+            padding: 26px 26px 24px;
+            border-radius: 24px;
+            background: #fff;
+            border: 1px solid rgba(72, 96, 144, 0.12);
+            box-shadow: 0 22px 38px rgba(23, 45, 88, 0.08);
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(255,199,95,0.35), transparent 55%);
+            z-index: 0;
+        }
+
+        .course-card h2,
+        .course-card h3 {
+            margin: 0 0 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-card h2 {
+            font-size: 1.4rem;
+            color: #1f1f34;
+        }
+
+        .course-card p {
+            margin: 0;
+            line-height: 1.8;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-box {
+            padding: 32px 26px;
+            border-radius: 26px;
+            text-align: center;
+            background: linear-gradient(180deg, #fff7e6 0%, #fff0d8 100%);
+            border: 1px solid rgba(255, 199, 95, 0.25);
+            animation: pulse 2.6s ease-in-out infinite;
+        }
+
+        .price-box h2 {
+            margin: 0;
+            font-size: clamp(3rem, 5vw, 4.6rem);
+            color: #d1602a;
+            letter-spacing: -0.03em;
+        }
+
+        .price-box p {
+            margin: 14px 0 0;
+            color: #6c4b2d;
+            font-size: 1.1rem;
+        }
+
+        .details {
+            display: grid;
+            gap: 18px;
+        }
+
+        .details-item {
+            background: linear-gradient(135deg, #fef5e8 0%, #fbf0ec 100%);
+            padding: 24px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 124, 124, 0.16);
+            box-shadow: 0 18px 30px rgba(38, 44, 76, 0.06);
+            animation: slideIn 1s ease both;
+        }
+
+        .details-item:nth-child(1) { animation-delay: 0.35s; }
+        .details-item:nth-child(2) { animation-delay: 0.45s; }
+        .details-item:nth-child(3) { animation-delay: 0.55s; }
+
+        .details-item h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+            color: #2b3250;
+        }
+
+        .details-item span {
+            display: block;
+            color: #5a5f7d;
+            line-height: 1.7;
+        }
+
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-top: 8px;
+            padding: 26px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(255,124,124,0.14), rgba(255,199,95,0.14));
+            border: 1px solid rgba(248, 209, 164, 0.35);
+        }
+
+        .footer p {
+            margin: 0;
+            font-weight: 700;
+            color: #2c324f;
+            font-size: 1.05rem;
+        }
+
+        .footer small {
+            color: #5a627a;
+            font-size: 0.95rem;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 999px;
+            background: #08112a;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            align-self: start;
+            animation: fadeIn 1s ease both;
+            animation-delay: 0.15s;
+        }
+
+        .hero-pill span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffc75f 0%, #ff7c7c 100%);
+            box-shadow: 0 0 18px rgba(255,124,124,0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-28px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @media (max-width: 960px) {
+            .poster {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .hero-panel,
+            .info-grid,
+            .footer {
+                padding: 24px;
+            }
+
+            .hero-panel h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <section class="hero-panel">
+            <div class="hero-pill"><span></span>5-day speaking camp</div>
+            <div>
+                <h1>English Speaking Course</h1>
+                <p>Learn to speak English naturally with daily practice, vocabulary, pronunciation drills, and comfortable conversation activities.</p>
+            </div>
+
+            <div class="course-card">
+                <h2>Course fee</h2>
+                <p>Complete five-day program for just ₹400. A smart and affordable way to build confidence and fluency fast.</p>
+            </div>
+
+            <div class="price-box">
+                <h2>₹400</h2>
+                <p>All 5 days included • Small groups • Practice-focused</p>
+            </div>
+        </section>
+
+        <section class="info-grid">
+            <div class="details-item">
+                <h3>Duration</h3>
+                <span>5 days of coaching and speaking practice.</span>
+            </div>
+            <div class="details-item">
+                <h3>Topics Covered</h3>
+                <span>Daily conversation, grammar in use, pronunciation, vocabulary building, and confidence training.</span>
+            </div>
+            <div class="details-item">
+                <h3>Who should join?</h3>
+                <span>Students, beginners, and anyone who wants to improve English speaking quickly.</span>
+            </div>
+            <div class="details-item">
+                <h3>Bonus</h3>
+                <span>Interactive practice, group activities, and speaking games for better retention.</span>
+            </div>
+
+            <div class="footer">
+                <p>Register now and start speaking English with confidence.</p>
+                <small>Course fee: ₹400 • Duration: 5 days</small>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
