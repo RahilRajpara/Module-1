@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Effect</title>
+</head>
+<body>
+  
+    <h1>Image Hover Effect</h1>
+      <div>
+   <img src="https://static.vecteezy.com/system/resources/previews/032/258/077/non_2x/a-river-in-the-forest-with-rocks-and-trees-ai-generated-free-photo.jpg" alt="Sample Image" >
+   </div>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            transition: transform 0.5s ease;
+
+           justify-content: center;
+           align-items: center;
+        }
+        img:hover {
+
+            transform: scale(1.2);
+        }
+    </style>
+    
+</body>
+</html>
